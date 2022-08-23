@@ -10,7 +10,7 @@ This app is hosted at This app is hosted at [http://13.215.83.42/ 🚀](http://1
 ```js
 const apolloClient: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
-  uri: '<GraphQL end point>',
+  uri: '<GraphQL endpoint>',
 });
 ```
 * run `npm run build`
