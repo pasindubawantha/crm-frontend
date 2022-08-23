@@ -23,25 +23,25 @@ export default function CustomerListItem({ customer }: CustomerListItemProps) {
         </Link>
       </td>
       <td>
-        {customer._id}
-      </td>
-      <td>
         {customer.name}
-      </td>
-      <td>
-        <a href={"mailto:" + customer.email}>{customer.email}</a>
-      </td>
-      <td>
-        <a href={"tel:" + customer.mobile_number}>{customer.mobile_number}</a>
-      </td>
-      <td>
-        {customer.address}
       </td>
       <td>
         <CustomerStatus status={customer.status}/>
       </td>
       <td>
+        <a href={"tel:" + customer.mobile_number}>{customer.mobile_number}</a>
+      </td>
+      <td>
+        <a href={"mailto:" + customer.email}>{customer.email}</a>
+      </td>
+      <td>
         {creation_date}
+      </td>
+      <td>
+        {customer.address}
+      </td>
+      <td>
+        {customer._id}
       </td>
     </tr>
   )

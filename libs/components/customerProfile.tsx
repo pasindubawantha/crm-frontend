@@ -4,6 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 
 import CustomerStatus from './customerStatus'
+import LoadingScreen from './loadingScreen';
+
 import Customer from '../types/Customer'
 import customerStatusEnum from '../types/enums/customerStatusEnum';
 
@@ -38,7 +40,11 @@ export default function CustomerProfile({ customer }: CustomerProfileProps) {
   const creation_date = new Date(customer.creation_date).toLocaleString('en-NZ')
 
 
-  if(loading) return <>Updating customer status</>
+  if(loading) return (<>
+    Updating customer status
+    <LoadingScreen />
+  </>)
+  
 
   return (
     <>

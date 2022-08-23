@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { gql, useMutation } from '@apollo/client';
 import * as Yup from "yup";
+import LoadingScreen from './loadingScreen';
+
 import oppotunityStatusEnum from '../types/enums/oppotunityStatusEnum'
 
 export const CREATE_OPPORTUNITY = gql`
@@ -27,7 +29,10 @@ export default function NewOpportunityForm({ customerID }: NewOpportunityFormPro
 
   });
 
-  if (loading) return <>Adding new opportunity</>
+  if (loading) return (<>
+    Adding new opportunity 
+    <LoadingScreen />
+    </>)
 
   return (
     <div className='row'>

@@ -3,6 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import { useState } from 'react'
 
 import SortButton from './sortButton';
+import LoadingScreen from './loadingScreen';
 
 import Customer from '../types/Customer'
 import CustomersQueryInterface from '../types/CustomersQueryInterface'
@@ -37,9 +38,9 @@ export default function CustomerList({ filters }: CustomerListProps) {
     },
   });
 
-  if (loading) return <div>Loading</div>
-  if (error) return <div>error</div>
-  if (!data) return (<>query data udefiend</>);
+  if (loading) return <LoadingScreen />;
+  if (error) return <>error</>
+  if (!data) return <>query data udefiend</>;
 
   return (
     <>
@@ -51,13 +52,13 @@ export default function CustomerList({ filters }: CustomerListProps) {
               <thead>
                 <tr>
                   <th />
-                  <th>Customer ID <SortButton sortByArray={sortBy} onClick={setSortBy} field={'_id'} fieldLabel="customer id"/></th>
                   <th>Name <SortButton sortByArray={sortBy} onClick={setSortBy} field={'name'} fieldLabel="name"/></th>
-                  <th>E-mail <SortButton sortByArray={sortBy} onClick={setSortBy} field={'email'} fieldLabel="e-mail"/></th>
-                  <th>Mobile Number <SortButton sortByArray={sortBy} onClick={setSortBy} field={'mobile_number'} fieldLabel="mobile number"/></th>
-                  <th>Address <SortButton sortByArray={sortBy} onClick={setSortBy} field={'address'} fieldLabel="address"/></th>
                   <th>Status <SortButton sortByArray={sortBy} onClick={setSortBy} field={'status'} fieldLabel="status"/></th>
+                  <th>Mobile Number <SortButton sortByArray={sortBy} onClick={setSortBy} field={'mobile_number'} fieldLabel="mobile number"/></th>
+                  <th>E-mail <SortButton sortByArray={sortBy} onClick={setSortBy} field={'email'} fieldLabel="e-mail"/></th>
                   <th>Creation Date <SortButton sortByArray={sortBy} onClick={setSortBy} field={'creation_date'} fieldLabel="creation date"/></th>
+                  <th>Address <SortButton sortByArray={sortBy} onClick={setSortBy} field={'address'} fieldLabel="address"/></th>
+                  <th>Customer ID <SortButton sortByArray={sortBy} onClick={setSortBy} field={'_id'} fieldLabel="customer id"/></th>
                 </tr>
               </thead>
               <tbody>

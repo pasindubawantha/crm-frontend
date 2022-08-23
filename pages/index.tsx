@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import FilterStringInput from '../libs/components/filterStringInput'
 import FilterAnyInput from '../libs/components/filterAnyInput'
 import CustomerList from '../libs/components/customerList'
+import LoadingScreen from '../libs/components/loadingScreen'
 
 import Customer from '../libs/types/Customer'
 import CustomersQueryInterface from '../libs/types/CustomersQueryInterface'
@@ -67,9 +68,9 @@ const Home: NextPage = () => {
     },
   });
 
-  if (error) return (<>error!</>);
-  if (loading) return (<>loading!</>);
-  if (!data) return (<>query data udefiend</>);
+  if (error) return <>error!</>;
+  if (loading) return <LoadingScreen />;
+  if (!data) return <>query data udefiend</>;
 
   const customerIDsOptionList = data.getCustomers.map((customer: Customer) => {
     return {value: customer._id, label: customer._id}
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
   
   return(
     <div className="row">
-      <div className="col">
+      <div className="col-sm-3">
         <div className="card mb-4 rounded-3 shadow-sm p-0">
           <div className="card-header py-3">
               <h4 className="my-0 fw-normal">Search & Filter Customers</h4>
@@ -191,7 +192,7 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="col">
+      <div className="col-sm-9">
         <CustomerList filters={models.filters} />
       </div>
     </div>

@@ -8,6 +8,7 @@ import OpportunityStatus from './opportunityStatus'
 import Opportunity from '../types/Opportunity';
 
 import oppotunityStatusEnum from '../types/enums/oppotunityStatusEnum';
+import LoadingScreen from "./loadingScreen";
 
 export const UPDATE_OPPORTUNITY = gql`
   mutation EditOpportunity($opportunityId: ID!, $updatedOpportunity: updatedOpportunity) {
@@ -54,9 +55,10 @@ export default function OpportunityListItem({ opportunity }: OpportunityListItem
     },
     onError: () => {alert('Failed to update delete ' + opportunity.name)}
   });
+
   
-  if (loading) return <>Updating opportunity</>
-  if (deleteOpportunityOperations.loading) return <>Deleting opportunity {opportunity.name}</>
+  if (loading) return <>Updating opportunity  <LoadingScreen /></>
+  if (deleteOpportunityOperations.loading) return <>Deleting opportunity {opportunity.name}  <LoadingScreen /></>
 
   if (formState === formStatses.READ_ONLY) {
     return (

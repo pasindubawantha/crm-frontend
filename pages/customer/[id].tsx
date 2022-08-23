@@ -6,6 +6,7 @@ import { useQuery, gql } from "@apollo/client";
 import CustomerProfile from '../../libs/components/customerProfile'
 import CustomerOpportunityList from '../../libs/components/customerOpportunityList'
 import NewOpportunityForm from '../../libs/components/newOpportunityForm'
+import LoadingScreen from '../../libs/components/loadingScreen';
 
 import Customer from '../../libs/types/Customer'
 
@@ -39,9 +40,9 @@ const CustomerPage: NextPage = () => {
       variables: { queryCustomerID: id },
     });
   
-    if (loading) return <div>Loading</div>
-    if (error) return <div>error</div>
-    if (!data) return (<>query data udefiend</>);
+    if (loading) return <LoadingScreen />;
+    if (error) return <>error</>
+    if (!data) return <>query data udefiend</>;
 
     return (
       <div className="row align-items-start">
